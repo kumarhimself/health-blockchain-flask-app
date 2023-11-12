@@ -10,11 +10,19 @@ def index():
 
 @app.route("/append")
 def append():
-    if len(request.args) != 1:
-        return "FALSE"
+    medical_ledger.append_block(request.args["search_key"], request.args["data"])
+    return medical_ledger.__str__()
 
-    medical_ledger.append_block(request.args["data"])
-    return "TRUE"
+@app.route("/retrieve")
+def retrieve():
+    search_key = request.args["search_key"]
+    
+    res = medical_ledger.search(search_key)
+
+    if res != None:
+        return flask.Response(res, status = 200)
+    else:
+        return flask.Response("ERROR: search key not found!!!", status = 400)
 
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", debug = False, threaded = False)
