@@ -9,7 +9,7 @@ class Blockchain:
         genesis_last_hash = generate_hash("Genesis Block - Hash Last")
         genesis_hash = generate_hash("Genesis Block - Current Hash")
 
-        genesis = Block(0000000000, "genesis", genesis_hash, genesis_last_hash)
+        genesis = Block("0", "genesis", genesis_hash, genesis_last_hash)
         self.chain = [genesis]
 
     def append_block(self, search_key, data):

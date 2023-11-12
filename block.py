@@ -1,3 +1,6 @@
+# Data is the unique identifier (UID) that each person
+# takes on.
+
 class Block:
     def __init__(self, key, data, previous_hash, current_hash):
         self.key = key

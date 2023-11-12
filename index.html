@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>MedBlocks</title>
+	</head>
+
+	<body>
+		<div class="title-area">
+			<h1>MedBlocks</h1>
+			<h3>Next-Level Health Data Privacy and Control</h3>
+		</div>
+		
+		<p>How it works:</p>
+		<ol>
+			<li>
+				Patients, ther users of our application, will have access to a search
+				key that will allow them to find their unique ID on the blockchain
+			</li>
+			<li>
+				Once the user obtains his/her own unique identifier, they can use
+				it to access a row on one of MedBlocks' databases, which contains
+				all of the medical records for that user.
+			</li>
+			<li>
+				New users can also create their own keys and get space on the database
+				to insert their health records.
+			</li>
+		</ol>
+
+		<h3>Account Creation</h3>
+		<p>Create your search key and unique identifier</p>
+
+		<button id="create-btn">Create Account</button>
+		
+		<h3>Access Unique Identifier (UID)</h3>
+		<p>Create your search key and unique identifier</p>
+	
+		<input id="search_key_box" type="text" placeholder="Enter your search key..." />
+		<button id="retrieve-btn">Access UID</button>
+	
+		<script>
+			let createBtn = document.getElementById("create-btn");
+			let retrieveBtn = document.getElementById("retrieve-btn");
+
+			createBtn.addEventListener("click", function () {
+				search_key = Math.random() * 1000
+				unique_user_id = Math.random() * 10000
+				location.replace(`http://127.0.0.1:5000/append?search_key=${search_key}&data=${unique_user_id}`);
+			});
+			
+			retrieveBtn.addEventListener("click", function () {
+				let search_key = document.getElementById("search_key_box").value
+
+				location.replace(`http://127.0.0.1:5000/retrieve?search_key=${search_key}`)
+			});
+
+		</script>
+	</body>
+</html>
