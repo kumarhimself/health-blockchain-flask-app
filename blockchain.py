@@ -26,4 +26,4 @@ class Blockchain:
         return None
 
     def __str__(self):
-        return ", ".join([self.chain[i].read_data() for i in range(len(self.chain))])
+        return ", ".join([self.chain[i].read_key() for i in range(len(self.chain))])
